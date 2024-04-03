@@ -1,39 +1,10 @@
-.App {}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html {
+  transition-duration: .3s;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
+body {
+  background: transparent;
+  transition-duration: .3s;
 }
 
 i:hover {
@@ -45,11 +16,15 @@ i:hover {
   height: 32px;
   border-radius: 50%;
   border: 1px solid rgb(168, 168, 168);
-  transition-duration: .3;
+  transition: .3s;
+}
+
+.theme1 {
+  background-color: white;
 }
 
 .theme2 {
-  background-color: gray;
+  background-color: rgb(233, 237, 156);
 }
 
 .theme3 {
@@ -57,11 +32,11 @@ i:hover {
 }
 
 .theme4 {
-  background-color: gray;
+  background-color: rgb(205, 149, 149);
 }
 
-.theme2 {
-  background-color: gray;
+.theme5 {
+  background-color: rgb(162, 232, 218);
 }
 
 .theme-active {

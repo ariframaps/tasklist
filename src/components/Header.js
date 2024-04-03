@@ -1,24 +1,27 @@
+import { useEffect, useState } from "react"
+
 export const Header = () => {
+    const [theme, setTheme] = useState('theme1');
+
+    useEffect(() => {
+        document.documentElement.removeAttribute('class');
+        document.documentElement.classList.add(theme);
+        document.body.removeAttribute('class');
+        document.body.classList.add(theme);
+    }, [theme])
+
     return (
-        <header className="row align-items-center my-3 border p-2 shadow w-100">
+        <header className="row align-items-center my-3 border p-2 shadow w-100 bg-white">
             <div className="col text-start fw-semibold fs-2">
                 <img src="logo192.png" alt="logo" height="70px" className='pe-3' />
                 Taskmate
             </div>
             <div className="col d-flex justify-content-end align-items-center gap-2">
-                {
-                    (() => {
-                        for (let i = 0; i < 5; i++) (
-                            <p>makanan</p>
-                        )
-                    })()
-                }
-
-                <i className="theme theme1"></i>
-                <i className="theme theme2 theme-active"></i>
-                <i className="theme theme3"></i>
-                <i className="theme theme4"></i>
-                <i className="theme theme5"></i>
+                <i onClick={() => setTheme('theme1')} className={`theme theme1 ${theme === 'theme1' ? 'theme-active' : ''}`}></i>
+                <i onClick={() => setTheme('theme2')} className={`theme theme2 ${theme === 'theme2' ? 'theme-active' : ''}`}></i>
+                <i onClick={() => setTheme('theme3')} className={`theme theme3 ${theme === 'theme3' ? 'theme-active' : ''}`}></i>
+                <i onClick={() => setTheme('theme4')} className={`theme theme4 ${theme === 'theme4' ? 'theme-active' : ''}`}></i>
+                <i onClick={() => setTheme('theme5')} className={`theme theme5 ${theme === 'theme5' ? 'theme-active' : ''}`}></i>
             </div>
         </header>
     )

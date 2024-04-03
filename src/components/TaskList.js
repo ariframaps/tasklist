@@ -9,7 +9,7 @@ export const TaskList = ({ setInput, taskList, setTaskList }) => {
     }
 
     return (
-        <div className='tasklist-container border p-4 shadow-sm rounded'>
+        <div className='tasklist-container border p-4 shadow-sm rounded bg-white'>
             <div className="info d-flex gap-5">
                 <p className="fw-semibold fs-4">Todo</p>
                 <p className='border border-black p-2 rounded fw-bolder'>{taskList ? taskList.length : 0}</p>
