@@ -15,7 +15,7 @@ export const TaskList = ({ setInput, taskList, setTaskList }) => {
                 <p className='border border-black p-2 rounded fw-bolder'>{taskList ? taskList.length : 0}</p>
             </div>
 
-            <div className="cards mt-5">
+            <div className="cards mt-3">
                 {taskList.map((task) => (
                     <div className="card mb-3" key={task.id}>
                         <div className="card-body d-flex justify-content-between">

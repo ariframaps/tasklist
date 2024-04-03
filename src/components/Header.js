@@ -11,7 +11,7 @@ export const Header = () => {
     }, [theme])
 
     return (
-        <header className="row align-items-center my-3 border p-2 shadow w-100 bg-white">
+        <header className="row align-items-center my-5 rounded border p-2 shadow w-100 bg-white">
             <div className="col text-start fw-semibold fs-2">
                 <img src="logo192.png" alt="logo" height="70px" className='pe-3' />
                 Taskmate
