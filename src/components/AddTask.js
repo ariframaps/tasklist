@@ -1,5 +1,4 @@
-
-export const AddTask = ({ input, setInput, taskList, setTaskList }) => {
+export const AddTask = ({ input, setInput, taskList, setTaskList, isEditing, setIsEditing, Index }) => {
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -7,20 +6,38 @@ export const AddTask = ({ input, setInput, taskList, setTaskList }) => {
         const time = date.toLocaleTimeString();
         const day = date.toLocaleDateString();
 
-        const newTask = {
-            id: date.getTime(),
-            task: input,
-            time: `${time} ${day}`
-        }
+        if (!isEditing) {
+            const newTask = {
+                id: date.getTime(),
+                task: input,
+                time: `${time} ${day}`
+            }
 
-        setTaskList([...taskList, newTask])
-        setInput({ ...input, task: "" })
+            setTaskList([...taskList, newTask])
+        } else {
+            taskList[Index] = {
+                ...taskList[Index],
+                task: input,
+                time: `${time} ${day}`
+            }
+        }
+        setIsEditing(false)
+        setInput("")
+    }
+
+    function handleCancel() {
+        setIsEditing(false)
+        setInput("")
     }
 
     return (
-        <form onSubmit={handleSubmit} className="input-group my-5 w-50">
-            <input onChange={(e) => setInput(e.target.value)} value={input.task} type="text" className="form-control" placeholder="Add task" name="task" required />
-            <button className="btn btn-success" type="submit">Add</button>
-        </form>
+        <form onSubmit={handleSubmit} className="input-group input-group-lg my-5">
+            <input onChange={(e) => setInput(e.target.value)} value={input || ""} type="text" className="form-control" placeholder="Add task" name="task" required />
+            <button className="btn btn-success" type="submit" > {isEditing ? "Edit" : "Add"}</button>
+            {
+                isEditing &&
+                <span onClick={() => handleCancel()} className="btn btn-outline-success">Cancel</span>
+            }
+        </form >
     )
 }
