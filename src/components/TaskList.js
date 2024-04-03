@@ -12,11 +12,11 @@ export const TaskList = ({ setInput, taskList, setTaskList }) => {
         <div className='tasklist-container border p-4 shadow-sm rounded bg-white'>
             <div className="info d-flex gap-5">
                 <p className="fw-semibold fs-4">Todo</p>
-                <p className='border border-black p-2 rounded fw-bolder'>{taskList ? taskList.length : 0}</p>
+                <p className='border border-black p-2 rounded fw-bolder'>{taskList.length}</p>
             </div>
 
             <div className="cards mt-3">
-                {taskList.map((task) => (
+                {taskList?.map((task) => (
                     <div className="card mb-3" key={task.id}>
                         <div className="card-body d-flex justify-content-between">
                             <div className="task-info">

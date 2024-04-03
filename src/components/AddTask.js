@@ -1,4 +1,4 @@
-export const AddTask = ({ input, setInput, taskList, setTaskList }) => {
+export const AddTask = ({ input, setInput, taskList, setTaskList, storageKey }) => {
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -21,6 +21,7 @@ export const AddTask = ({ input, setInput, taskList, setTaskList }) => {
                 task: input.task,
                 time: `${time} ${day}`
             }
+            localStorage.setItem(storageKey.tasks, JSON.stringify(taskList));
         }
         setInput({})
     }

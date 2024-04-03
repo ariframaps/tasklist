@@ -1,8 +1,6 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 
-export const Header = () => {
-    const [theme, setTheme] = useState('theme1');
-
+export const Header = ({ theme, setTheme }) => {
     useEffect(() => {
         document.documentElement.removeAttribute('class');
         document.documentElement.classList.add(theme);
