@@ -1,4 +1,4 @@
-import React from 'react'
+import { TaskCard } from "./TaskCard"
 
 export const TaskList = ({ taskList }) => {
     return (
@@ -15,14 +15,7 @@ export const TaskList = ({ taskList }) => {
 
             <div className="cards mt-5">
                 {taskList && taskList.map((task) => (
-                    <div className="card mb-3" key={task.id}>
-                        <div className="card-body">
-                            <h5 className="card-title">{task.task}</h5>
-                            <h6 className="card-subtitle mb-2 text-body-secondary my-3">{task.time}</h6>
-                            <i className="bi bi-pen-fill card-link fs-5"></i>
-                            <i className="bi bi-trash3-fill card-link fs-5"></i>
-                        </div>
-                    </div>
+                    <TaskCard task={task} />
                 ))}
             </div>
         </div>

@@ -19,7 +19,7 @@ export const AddTask = ({ input, setInput, taskList, setTaskList }) => {
 
     return (
         <form onSubmit={handleSubmit} className="input-group my-5 w-50">
-            <input onChange={(e) => setInput(e.target.value)} value={input.task} type="text" className="form-control" placeholder="Add task" name="task" />
+            <input onChange={(e) => setInput(e.target.value)} value={input.task} type="text" className="form-control" placeholder="Add task" name="task" required />
             <button className="btn btn-success" type="submit">Add</button>
         </form>
     )
