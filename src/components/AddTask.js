@@ -1,4 +1,4 @@
-export const AddTask = ({ input, setInput, taskList, setTaskList, isEditing, setIsEditing, Index }) => {
+export const AddTask = ({ input, setInput, taskList, setTaskList }) => {
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -6,36 +6,35 @@ export const AddTask = ({ input, setInput, taskList, setTaskList, isEditing, set
         const time = date.toLocaleTimeString();
         const day = date.toLocaleDateString();
 
-        if (!isEditing) {
+        if (!input.id) {
             const newTask = {
                 id: date.getTime(),
-                task: input,
+                task: input.task,
                 time: `${time} ${day}`
             }
 
             setTaskList([...taskList, newTask])
         } else {
-            taskList[Index] = {
-                ...taskList[Index],
-                task: input,
+            const index = taskList.findIndex(task => task.id === input.id);
+            taskList[index] = {
+                ...taskList[index],
+                task: input.task,
                 time: `${time} ${day}`
             }
         }
-        setIsEditing(false)
-        setInput("")
+        setInput({})
     }
 
     function handleCancel() {
-        setIsEditing(false)
-        setInput("")
+        setInput({})
     }
 
     return (
-        <form onSubmit={handleSubmit} className="input-group input-group-lg my-5">
-            <input onChange={(e) => setInput(e.target.value)} value={input || ""} type="text" className="form-control" placeholder="Add task" name="task" required />
-            <button className="btn btn-success" type="submit" > {isEditing ? "Edit" : "Add"}</button>
+        <form onSubmit={handleSubmit} className="input-group input-group-lg my-5 shadow-sm">
+            <input onChange={(e) => setInput({ ...input, task: e.target.value })} value={input.task || ""} type="text" className="form-control" placeholder="Add task" name="task" required />
+            <button className="btn btn-success" type="submit" > {input.id ? "Edit" : "Add"}</button>
             {
-                isEditing &&
+                input.id &&
                 <span onClick={() => handleCancel()} className="btn btn-outline-success">Cancel</span>
             }
         </form >

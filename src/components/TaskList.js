@@ -1,8 +1,6 @@
-export const TaskList = ({ input, setInput, taskList, setTaskList, setIsEditing, setIndex }) => {
+export const TaskList = ({ setInput, taskList, setTaskList }) => {
     function handleEdit(id) {
-        setIsEditing(true);
-        setIndex(taskList.findIndex(task => task.id === id));
-        setInput(taskList.find(task => task.id === id).task);
+        setInput(taskList.find(task => task.id === id));
     }
 
     function handleDelete(id) {
@@ -11,19 +9,14 @@ export const TaskList = ({ input, setInput, taskList, setTaskList, setIsEditing,
     }
 
     return (
-        <div className='tasklist-container border p-4'>
-            <div className="head row">
-                <div className="info col d-flex gap-5">
-                    <p className="fw-semibold fs-4">Todo</p>
-                    <p className='border border-black p-2 rounded-circle fw-bolder'>{taskList ? taskList.length : 0}</p>
-                </div>
-                <div className="clear col text-end">
-                    <button className="btn btn-primary">Clear All</button>
-                </div>
+        <div className='tasklist-container border p-4 shadow-sm rounded'>
+            <div className="info d-flex gap-5">
+                <p className="fw-semibold fs-4">Todo</p>
+                <p className='border border-black p-2 rounded fw-bolder'>{taskList ? taskList.length : 0}</p>
             </div>
 
             <div className="cards mt-5">
-                {taskList && taskList.map((task) => (
+                {taskList.map((task) => (
                     <div className="card mb-3" key={task.id}>
                         <div className="card-body d-flex justify-content-between">
                             <div className="task-info">
